@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
   --tertiary: #faf02e;
   --dark: #2e2d2d;
   --white: #ffffff;
+
+  --headline: 'Nanum Brush Script';
 }
 
 *,

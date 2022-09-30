@@ -20,12 +20,4 @@ const HeaderContainer = styled.header`
   & img {
     height: 90px;
   }
-
-  & h2 {
-    font-family: 'Get Schwifty';
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin: 0;
-    padding: 0;
-  }
 `;

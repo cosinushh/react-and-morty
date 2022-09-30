@@ -27,16 +27,27 @@ const CardContainer = styled.article`
   }
 
   & h2 {
+    font-family: var(--headline);
+    text-transform: uppercase;
+    font-size: 2em;
     padding: 1em;
-    color: var(--primary);
+    color: var(--secondary);
   }
 `;
 
 const Button = styled.button`
+  font-family: var(--headline);
+  text-transform: uppercase;
   background: var(--primary);
   color: var(--dark);
   border: none;
-  font-size: 1em;
-  padding: 1em;
+  font-size: 1.5em;
+  border-radius: 5px;
+  padding: 0.5em;
   margin-bottom: 2em;
+  transition: 300ms ease-in-out;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
 `;
