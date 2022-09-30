@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-function Header({ appName }) {
+function Header() {
   return (
     <HeaderContainer>
-      <h2>{appName}</h2>
+      <img src="./react-and-morty-logo.png" alt="logo" />
     </HeaderContainer>
   );
 }
@@ -15,7 +15,11 @@ const HeaderContainer = styled.header`
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
   background-color: var(--background);
   margin: 0;
-  padding: 1rem;
+  padding: 0.2em;
+
+  & img {
+    height: 90px;
+  }
 
   & h2 {
     font-family: 'Get Schwifty';
