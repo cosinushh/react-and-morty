@@ -15,18 +15,18 @@ function App() {
       </main>
       <footer>
         <nav>
-          <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 15 }}>
             <li>
-              <div style={{ width: 50, height: 50, backgroundColor: 'blue' }}>Nav 1</div>
+              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
             </li>
             <li>
-              <div style={{ width: 50, height: 50, backgroundColor: 'red' }}>Nav 2</div>
+              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
             </li>
             <li>
-              <div style={{ width: 50, height: 50, backgroundColor: 'green' }}>Nav 3</div>
+              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
             </li>
             <li>
-              <div style={{ width: 50, height: 50, backgroundColor: 'yellow' }}>Nav 4</div>
+              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
             </li>
           </ul>
         </nav>
