@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
   --white: #ffffff;
 }
 
-
 *,
 *:before,
 *:after {

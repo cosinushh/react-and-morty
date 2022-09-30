@@ -1,17 +1,15 @@
 import './App.css';
 import Header from './components/Header';
+import Card from './components/Card';
+import styled from 'styled-components';
 
 function App() {
   return (
     <div className="App">
-      <Header appName={"React and Morty"}></Header>
-      <main>
-        <article>
-          <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="" />
-          <h2>Morty Smith</h2>
-          <button>Show more</button>
-        </article>
-      </main>
+      <Header appName={'React and Morty'} />
+      <CardsContainer>
+        <Card />
+      </CardsContainer>
       <footer>
         <nav>
           <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 15 }}>
@@ -35,3 +33,9 @@ function App() {
 }
 
 export default App;
+
+const CardsContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
