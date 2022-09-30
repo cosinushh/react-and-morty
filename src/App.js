@@ -1,11 +1,10 @@
 import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h2>React and Morty</h2>
-      </header>
+      <Header appName={"React and Morty"}></Header>
       <main>
         <article>
           <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="" />
