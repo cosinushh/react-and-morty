@@ -1,7 +1,7 @@
-import './App.css';
 import Header from './components/Header';
 import Card from './components/Card';
 import styled from 'styled-components';
+import Navigation from './components/Navigation';
 
 function App() {
   return (
@@ -9,25 +9,10 @@ function App() {
       <Header appName={'React and Morty'} />
       <CardsContainer>
         <Card />
+        <Card />
+        <Card />
       </CardsContainer>
-      <footer>
-        <nav>
-          <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 15 }}>
-            <li>
-              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-            </li>
-            <li>
-              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-            </li>
-            <li>
-              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-            </li>
-            <li>
-              <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-            </li>
-          </ul>
-        </nav>
-      </footer>
+      <Navigation />
     </div>
   );
 }
@@ -35,7 +20,7 @@ function App() {
 export default App;
 
 const CardsContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-y: auto;
+  margin-left: auto;
+  margin-right: auto;
 `;

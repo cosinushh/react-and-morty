@@ -1,14 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+
+
 :root {
-  --background: #b0dcd9;
+  
+  --background: #272d5d;
+  --primary: #42b6c8;
+  --primary-light: #d2f0fa;
+  --secondary: #97d94d;
+  --tertiary: #faf02e;
   --dark: #2e2d2d;
-  --primary: #d39af6;
-  --primary-light: #ebd5f8;
-  --secondary: #67c998;
-  --tertiary: #e4d360;
-  --black: #000000;
   --white: #ffffff;
 }
 
@@ -19,18 +21,17 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 
-body {
-  margin: 0;
+.App {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-}
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+  text-align: center;
+  background-color: var(--primary-light);
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
- */
 
 `;
 
