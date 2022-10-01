@@ -3,6 +3,8 @@ import Card from './components/Card';
 import styled from 'styled-components';
 import Navigation from './components/Navigation';
 import { useState, useEffect } from 'react';
+import HomePage from './pages/HomePage';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -25,9 +27,12 @@ function App() {
     <div className="App">
       <Header appName={'React and Morty'} />
       <CardsContainer>
-        {characters.map((character) => {
-          return <Card key={character.id} props={character} />;
-        })}
+        <>
+          <Routes>
+            <Route path="/" end element={<HomePage characters={characters} />}></Route>
+            <Route path="/test" end element={<HomePage characters={characters} />}></Route>
+          </Routes>
+        </>
       </CardsContainer>
       <Navigation />
     </div>
