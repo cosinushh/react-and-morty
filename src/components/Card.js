@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-function Card() {
+function Card({ props }) {
   return (
     <CardContainer>
-      <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="" />
-      <h2>Morty Smith</h2>
+      {console.log(props.name)}
+      <img src={props.image} alt="" />
+      <h2>{props.name}</h2>
       <Button>Show more</Button>
     </CardContainer>
   );
