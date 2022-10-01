@@ -36,15 +36,16 @@ const CardContainer = styled.article`
 `;
 
 const Button = styled.button`
-  font-family: var(--headline);
+  font-family: var(--copy);
   text-transform: uppercase;
+  letter-spacing: 0.1em;
   background: var(--primary);
   color: var(--dark);
   border: none;
-  font-size: 1.5em;
+  font-size: 0.8em;
   border-radius: 5px;
-  padding: 0.5em;
-  margin-bottom: 2em;
+  padding: 0.8em;
+  margin-bottom: 3em;
   transition: 300ms ease-in-out;
 
   &:hover {
