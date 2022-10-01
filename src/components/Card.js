@@ -6,6 +6,13 @@ function Card({ props }) {
       {console.log(props.name)}
       <img src={props.image} alt="" />
       <h2>{props.name}</h2>
+      <ul>
+        <li>Status: {props.status}</li>
+        <li>Species: {props.species}</li>
+        <li>Gender: {props.gender}</li>
+        <li>Origin: {props.origin.name}</li>
+        <li>Location: {props.location.name}</li>
+      </ul>
       <Button>Show more</Button>
     </CardContainer>
   );
@@ -34,6 +41,12 @@ const CardContainer = styled.article`
     padding: 1em;
     color: var(--secondary);
   }
+
+  & ul {
+    color: var(--secondary);
+    text-align: left;
+    font-family: var(--copy);
+  }
 `;
 
 const Button = styled.button`
@@ -46,7 +59,7 @@ const Button = styled.button`
   font-size: 0.8em;
   border-radius: 5px;
   padding: 0.8em;
-  margin-bottom: 3em;
+  margin: 3em auto;
   transition: 300ms ease-in-out;
 
   &:hover {
