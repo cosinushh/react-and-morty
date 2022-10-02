@@ -94,7 +94,7 @@ const Button = styled.button`
 `;
 
 const DetailsList = styled.table`
-  margin: 0 2em 1em 2em;
+  margin: 0 auto 1em auto;
   color: var(--secondary);
   font-family: var(--copy);
   text-align: left;
