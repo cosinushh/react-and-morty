@@ -1,19 +1,44 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-function Card({ props }) {
+import useDetailsStatus from '../hooks';
+
+function Card({ props, detailsState }) {
+  const [details, { toggleDetailsStatus }] = useDetailsStatus(detailsState);
+
   return (
     <CardContainer>
-      {console.log(props.name)}
       <img src={props.image} alt="" />
       <h2>{props.name}</h2>
-      <ul>
-        <li>Status: {props.status}</li>
-        <li>Species: {props.species}</li>
-        <li>Gender: {props.gender}</li>
-        <li>Origin: {props.origin.name}</li>
-        <li>Location: {props.location.name}</li>
-      </ul>
-      <Button>Show more</Button>
+      {details && (
+        <DetailsList>
+          <tbody>
+            <tr>
+              <th>Status:</th>
+              <td>{props.status}</td>
+            </tr>
+            <tr>
+              <th>Species:</th>
+              <td>{props.species}</td>
+            </tr>
+            <tr>
+              <th>Gender:</th>
+              <td>{props.gender}</td>
+            </tr>
+            <tr>
+              <th>Origin:</th>
+              <td>{props.origin.name}</td>
+            </tr>
+            <tr>
+              <th>Location:</th>
+              <td>{props.location.name}</td>
+            </tr>
+          </tbody>
+        </DetailsList>
+      )}
+      <Link onClick={toggleDetailsStatus} to={`/character/${props.id}`}>
+        <Button>{!details ? 'show more' : 'hide details'}</Button>
+      </Link>
     </CardContainer>
   );
 }
@@ -38,7 +63,7 @@ const CardContainer = styled.article`
     font-family: var(--headline);
     text-transform: uppercase;
     font-size: 2em;
-    padding: 1em;
+    padding: 0.5em 1em;
     color: var(--secondary);
   }
 
@@ -59,10 +84,40 @@ const Button = styled.button`
   font-size: 0.8em;
   border-radius: 5px;
   padding: 0.8em;
-  margin: 3em auto;
+  margin-bottom: 3em;
+  margin-top: 1em;
   transition: 300ms ease-in-out;
 
   &:hover {
     background-color: var(--secondary);
+  }
+`;
+
+const DetailsList = styled.table`
+  margin: 0 2em 1em 2em;
+  color: var(--secondary);
+  font-family: var(--copy);
+  text-align: left;
+  border-collapse: collapse;
+  font-size: 0.95em;
+
+  & tr {
+    background-color: #1f244a;
+  }
+  & tr:nth-child(even) {
+    background-color: #232854;
+  }
+
+  & th {
+    color: var(--primary);
+    text-align: right;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  & th,
+  td {
+    padding: 10px;
   }
 `;

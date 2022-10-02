@@ -1,10 +1,10 @@
 import Header from './components/Header';
-import Card from './components/Card';
 import styled from 'styled-components';
 import Navigation from './components/Navigation';
 import { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
+import CharacterPage from './pages/CharacterPage';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -27,12 +27,10 @@ function App() {
     <div className="App">
       <Header appName={'React and Morty'} />
       <CardsContainer>
-        <>
-          <Routes>
-            <Route path="/" end element={<HomePage characters={characters} />}></Route>
-            <Route path="/test" end element={<HomePage characters={characters} />}></Route>
-          </Routes>
-        </>
+        <Routes>
+          <Route path="/" end element={<HomePage characters={characters} />}></Route>
+          <Route path="/character/:id" element={<CharacterPage characters={characters} detailsState={true} />}></Route>
+        </Routes>
       </CardsContainer>
       <Navigation />
     </div>
