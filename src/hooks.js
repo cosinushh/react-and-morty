@@ -3,7 +3,6 @@ import { useState } from 'react';
 function useDetailsStatus(initialState) {
   const [showDetails, setShowDetails] = useState(initialState);
 
-
   return [
     showDetails,
     {

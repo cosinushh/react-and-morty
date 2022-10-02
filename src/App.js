@@ -25,13 +25,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header appName={'React and Morty'} />
-      <CardsContainer>
-        <Routes>
-          <Route path="/" end element={<HomePage characters={characters} />}></Route>
-          <Route path="/character/:id" element={<CharacterPage characters={characters} detailsState={true} />}></Route>
-        </Routes>
-      </CardsContainer>
+        <Header appName={'React and Morty'} />
+        <CardsContainer>
+          <Routes>
+            <Route path="/" end element={<HomePage characters={characters} />}></Route>
+            <Route
+              path="/character/:id"
+              element={<CharacterPage characters={characters} detailsState={true} />}
+            ></Route>
+          </Routes>
+        </CardsContainer>
       <Navigation />
     </div>
   );

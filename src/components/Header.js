@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import logo from '../assets/img/react-and-morty-logo.png';
 
 function Header() {
   return (
     <HeaderContainer>
-      <img src="./react-and-morty-logo.png" alt="logo" />
+      <img src={logo} alt="logo" />
     </HeaderContainer>
   );
 }
