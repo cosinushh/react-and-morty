@@ -100,6 +100,7 @@ const DetailsList = styled.table`
   text-align: left;
   border-collapse: collapse;
   font-size: 0.95em;
+  width: 80%;
 
   & tr {
     background-color: #1f244a;
