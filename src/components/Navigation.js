@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 function Navigation() {
   return (
@@ -6,17 +7,19 @@ function Navigation() {
       <nav>
         <NavigationContainer>
           <li>
-            <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
+            <LinkButton to="/" end>
+              Home
+            </LinkButton>
           </li>
           <li>
-            <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
+            <LinkButton to="/favorites">Favorites</LinkButton>
+          </li>
+          {/* <li>
+            <LinkButton>X</LinkButton>
           </li>
           <li>
-            <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-          </li>
-          <li>
-            <div style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: 'purple' }}></div>
-          </li>
+            <LinkButton>X</LinkButton>
+          </li> */}
         </NavigationContainer>
       </nav>
     </footer>
@@ -35,4 +38,19 @@ const NavigationContainer = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+`;
+
+const LinkButton = styled(NavLink)`
+  font-family: var(--copy);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  margin: 10px;
+  text-decoration: none;
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 0.5rem;
+  border-radius: 3px;
+  &.active {
+    background-color: var(--secondary);
+  }
 `;
