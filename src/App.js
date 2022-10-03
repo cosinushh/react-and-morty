@@ -8,7 +8,7 @@ import { useLocalStorage } from './hooks';
 import { useEffect } from 'react';
 
 function App() {
-  const [characters, setCharacters] = useLocalStorage('character');
+  const [characters, setCharacters] = useLocalStorage('character', [{ id: 0 }]);
 
   async function fetchCharacters() {
     try {
@@ -49,7 +49,10 @@ function App() {
             end
             element={<HomePage characters={characters} toggleFavorite={changeFavoriteStatus} />}
           ></Route>
-          <Route path="/character/:id" element={<CharacterPage characters={characters} toggleFavorite={changeFavoriteStatus} />}></Route>
+          <Route
+            path="/character/:id"
+            element={<CharacterPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
+          ></Route>
         </Routes>
       </CardsContainer>
       <Navigation />
