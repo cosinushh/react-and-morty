@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
-
 :root {
   
   --background: #272d5d;
@@ -14,9 +13,7 @@ const GlobalStyle = createGlobalStyle`
   --white: #ffffff;
 
   --headline: 'Nanum Brush Script';
-  --copy: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  --copy: 'Inter', sans-serif;
 }
 
 *,
