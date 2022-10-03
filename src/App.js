@@ -4,11 +4,15 @@ import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import CharacterPage from './pages/CharacterPage';
-import { useLocalStorage } from './hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [characters, setCharacters] = useLocalStorage('character', [{ id: 0 }]);
+  const [characters, setCharacters] = useState(readLocalStorage('characters') ?? []);
+
+  function readLocalStorage(key) {
+    const localStorageData = localStorage.getItem(key);
+    return JSON.parse(localStorageData);
+  }
 
   async function fetchCharacters() {
     try {
@@ -24,8 +28,14 @@ function App() {
   }
 
   useEffect(() => {
-    fetchCharacters();
+    if (characters.length === 0) {
+      fetchCharacters();
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('characters', JSON.stringify(characters));
+  }, [characters]);
 
   function changeFavoriteStatus(cardId) {
     setCharacters(
