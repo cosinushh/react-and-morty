@@ -36,8 +36,8 @@ function Card({ props, detailsState }) {
           </tbody>
         </DetailsList>
       )}
-      <Link onClick={toggleDetailsStatus} to={`/character/${props.id}`}>
-        <Button>{!details ? 'show more' : 'hide details'}</Button>
+      <Link to={`/character/${props.id}`}>
+        <Button onClick={toggleDetailsStatus}>{!details ? 'show more' : 'hide details'}</Button>
       </Link>
     </CardContainer>
   );

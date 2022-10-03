@@ -6,7 +6,7 @@ export default function CharacterPage({ characters }) {
   return (
     <>
       {characters
-        .filter((character) => character.id === Number(id))
+        .filter((character) => character.id === parseInt(id))
         .map((character) => {
           return <Card key={character.id} props={character} detailsState={true} />;
         })}
