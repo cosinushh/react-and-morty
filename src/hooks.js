@@ -1,16 +1,11 @@
 import { useState } from 'react';
 
-function useDetailsStatus(initialState) {
-  const [showDetails, setShowDetails] = useState(initialState);
+function useToggle(initialState = false) {
+  const [visible, setVisible] = useState(initialState);
 
-  return [
-    showDetails,
-    {
-      toggleDetailsStatus: () => {
-        setShowDetails((prevDetails) => !prevDetails);
-      },
-    },
-  ];
+  const toggle = () => setVisible((prevVisible) => !prevVisible);
+
+  return [visible, toggle];
 }
 
-export default useDetailsStatus;
+export { useToggle };
