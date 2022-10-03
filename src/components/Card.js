@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-import useDetailsStatus from '../hooks';
+import useToggle from '../hooks';
 
 function Card({ props, detailsState }) {
-  const [details, { toggleDetailsStatus }] = useDetailsStatus(detailsState);
+  const [details, toggleDetails] = useToggle(detailsState);
+  const [bookmark, toggleBookmark] = useToggle();
 
   return (
     <CardContainer>
@@ -37,9 +37,9 @@ function Card({ props, detailsState }) {
         </DetailsList>
       )}
       <Link to={`/character/${props.id}`}>
-        <Button onClick={toggleDetailsStatus}>{!details ? 'show more' : 'hide details'}</Button>
+        <Button onClick={toggleDetails}>{!details ? 'show more' : 'hide details'}</Button>
       </Link>
-      <BookmarkButton />
+      <BookmarkButton onClick={toggleBookmark} bookmarked={bookmark} />
     </CardContainer>
   );
 }
@@ -127,15 +127,11 @@ const DetailsList = styled.table`
 const BookmarkButton = styled.div`
   width: 2em;
   height: 2em;
-  background-color: var(--primary-with-alpha);
-  border: 2px solid var(--primary);
+  background-color: ${({ bookmarked }) => (bookmarked ? 'var(--secondary)' : 'var(--primary-with-alpha)')};
+  border: ${({ bookmarked }) => (bookmarked ? 'none' : '2px solid var(--primary)')};
   border-radius: 50%;
   position: absolute;
   top: -0.5em;
   right: -0.5em;
   transition: 300ms ease-in-out;
-
-  &:hover {
-    background-color: var(--primary);
-  }
 `;
