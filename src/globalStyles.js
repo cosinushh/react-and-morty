@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   
   --background: #272d5d;
   --primary: #42b6c8;
+  --primary-with-alpha: #42b6c877;
   --primary-light: #d2f0fa;
   --secondary: #97d94d;
   --tertiary: #faf02e;
@@ -32,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
   grid-template-rows: 60px 1fr 60px;
   text-align: center;
   background-color: var(--primary-light);
-
 }
 
 `;

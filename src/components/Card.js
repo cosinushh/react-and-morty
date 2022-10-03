@@ -39,6 +39,7 @@ function Card({ props, detailsState }) {
       <Link to={`/character/${props.id}`}>
         <Button onClick={toggleDetailsStatus}>{!details ? 'show more' : 'hide details'}</Button>
       </Link>
+      <BookmarkButton />
     </CardContainer>
   );
 }
@@ -48,7 +49,7 @@ export default Card;
 const CardContainer = styled.article`
   z-index: 10;
   background-color: var(--background);
-  margin: 2em 0;
+  margin: 2em 1em;
   text-align: center;
   position: relative;
   width: 300px;
@@ -120,5 +121,21 @@ const DetailsList = styled.table`
   & th,
   td {
     padding: 10px;
+  }
+`;
+
+const BookmarkButton = styled.div`
+  width: 2em;
+  height: 2em;
+  background-color: var(--primary-with-alpha);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  transition: 300ms ease-in-out;
+
+  &:hover {
+    background-color: var(--primary);
   }
 `;
