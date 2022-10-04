@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import CharacterPage from './pages/CharacterPage';
+import FavoritesPage from './pages/FavoritesPage';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -58,11 +59,15 @@ function App() {
             path="/"
             end
             element={<HomePage characters={characters} toggleFavorite={changeFavoriteStatus} />}
-          ></Route>
+          />
           <Route
             path="/character/:id"
             element={<CharacterPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
-          ></Route>
+          />
+           <Route
+            path="/favorites"
+            element={<FavoritesPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
+          />
         </Routes>
       </CardsContainer>
       <Navigation />

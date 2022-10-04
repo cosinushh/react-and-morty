@@ -45,7 +45,20 @@ function Card({ props, detailsState, toggleFavorite }) {
           toggleFavorite();
         }}
         bookmarked={bookmark}
-      />
+      >
+        {!bookmark ? (
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -3 24 24" width="20">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -3 24 24" width="20">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+        )}
+      </BookmarkButton>
     </CardContainer>
   );
 }
@@ -134,10 +147,14 @@ const BookmarkButton = styled.div`
   width: 2em;
   height: 2em;
   background-color: ${({ bookmarked }) => (bookmarked ? 'var(--secondary)' : 'var(--primary-with-alpha)')};
-  border: ${({ bookmarked }) => (bookmarked ? 'none' : '2px dotted var(--primary)')};
+  border: ${({ bookmarked }) => (bookmarked ? '2px solid var(--secondary)' : '2px dotted var(--primary)')};
   border-radius: 50%;
   position: absolute;
   top: -0.5em;
   right: -0.5em;
   transition: 300ms ease-in-out;
+
+  & svg {
+    fill: ${({ bookmarked }) => (bookmarked ? 'var(--primary-light)' : 'var(--primary)')};
+  }
 `;
