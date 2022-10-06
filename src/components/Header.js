@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import logo from '../assets/img/react-and-morty-logo.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <HeaderContainer>
-      <img src={logo} alt="logo" />
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
     </HeaderContainer>
   );
 }

@@ -14,10 +14,10 @@ function Navigation() {
           <li>
             <LinkButton to="/favorites">Favorites</LinkButton>
           </li>
-          {/* <li>
-            <LinkButton>X</LinkButton>
-          </li>
           <li>
+            <LinkButton to="/random">Random</LinkButton>
+          </li>
+          {/* <li>
             <LinkButton>X</LinkButton>
           </li> */}
         </NavigationContainer>
@@ -38,6 +38,7 @@ const NavigationContainer = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  transition: 500ms ease-in-out;
 `;
 
 const LinkButton = styled(NavLink)`
@@ -50,7 +51,12 @@ const LinkButton = styled(NavLink)`
   color: var(--background);
   padding: 0.5rem;
   border-radius: 3px;
+
   &.active {
     background-color: var(--secondary);
+  }
+
+  &:hover {
+    background-color: var(--tertiary);
   }
 `;
