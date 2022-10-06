@@ -1,13 +1,19 @@
 import Card from '../components/Card';
 
-export default function FavoritesPage({ characters, toggleFavorite }) {
+export default function FavoritesPage({ characters, favorites, toggleFavorite }) {
   return (
     <>
       {characters
-        .filter((character) => character.favorite === true)
+        .filter((character) => favorites.includes(character.id))
         .map((item) => {
           return (
-            <Card key={item.id} props={item} detailsState={false} toggleFavorite={() => toggleFavorite(item.id)} />
+            <Card
+              key={item.id}
+              props={item}
+              detailsState={false}
+              favorites={favorites}
+              toggleFavorite={() => toggleFavorite(item.id)}
+            />
           );
         })}
     </>

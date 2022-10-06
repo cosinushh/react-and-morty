@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useToggle } from '../hooks';
 
-function Card({ props, detailsState, toggleFavorite }) {
+function Card({ props, detailsState, toggleFavorite, favorites }) {
   const [details, toggleDetails] = useToggle(detailsState);
-  const [bookmark, toggleBookmark] = useToggle(props.favorite);
+  const [bookmark, toggleBookmark] = useToggle(favorites.includes(props.id));
 
   return (
     <CardContainer>

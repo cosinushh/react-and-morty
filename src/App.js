@@ -9,46 +9,38 @@ import RandomPage from './pages/RandomPage';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [characters, setCharacters] = useState(readLocalStorage('characters') ?? []);
-
-  function readLocalStorage(key) {
-    const localStorageData = localStorage.getItem(key);
-    return JSON.parse(localStorageData);
-  }
+  const [characters, setCharacters] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    return JSON.parse(localStorage.getItem('favorites')) ?? [];
+  });
 
   async function fetchCharacters() {
     try {
       const result = await fetch('https://rickandmortyapi.com/api/character');
       const data = await result.json();
-      const dataWithFavorite = data.results.map((date) => {
-        return { ...date, favorite: false };
-      });
-      setCharacters(dataWithFavorite);
+      setCharacters(data.results);
     } catch (error) {
       console.error(error);
     }
   }
 
   useEffect(() => {
-    if (characters.length === 0) {
-      fetchCharacters();
-    }
+    fetchCharacters();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('characters', JSON.stringify(characters));
-  }, [characters]);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   function changeFavoriteStatus(cardId) {
-    setCharacters(
-      characters.map((character) => {
-        if (character.id === cardId) {
-          return { ...character, favorite: !character.favorite };
-        } else {
-          return character;
-        }
-      })
-    );
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.includes(cardId)) {
+        return prevFavorites.filter((item) => item !== cardId);
+      } else {
+        return [...prevFavorites, cardId];
+      }
+    });
+    console.log('CardId: ' + cardId);
   }
 
   return (
@@ -56,14 +48,21 @@ function App() {
       <Header appName={'React and Morty'} />
       <CardsContainer>
         <Routes>
-          <Route path="/" element={<HomePage characters={characters} toggleFavorite={changeFavoriteStatus} />} />
+          <Route
+            path="/"
+            element={<HomePage characters={characters} favorites={favorites} toggleFavorite={changeFavoriteStatus} />}
+          />
           <Route
             path="/character/:id"
-            element={<CharacterPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
+            element={
+              <CharacterPage characters={characters} favorites={favorites} toggleFavorite={changeFavoriteStatus} />
+            }
           />
           <Route
             path="/favorites"
-            element={<FavoritesPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
+            element={
+              <FavoritesPage characters={characters} favorites={favorites} toggleFavorite={changeFavoriteStatus} />
+            }
           />
           <Route
             path="/random"
