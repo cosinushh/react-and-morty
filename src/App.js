@@ -1,18 +1,18 @@
 import Header from './components/Header';
-import styled from 'styled-components';
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
-import { Routes, Route } from 'react-router-dom';
 import CharacterPage from './pages/CharacterPage';
 import FavoritesPage from './pages/FavoritesPage';
 import RandomPage from './pages/RandomPage';
+
 import { useEffect, useState } from 'react';
+import { useLocalStorage } from './hooks.js';
+import styled from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(localStorage.getItem('favorites')) ?? [];
-  });
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
   async function fetchCharacters() {
     try {
@@ -27,10 +27,6 @@ function App() {
   useEffect(() => {
     fetchCharacters();
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
 
   function changeFavoriteStatus(cardId) {
     setFavorites((prevFavorites) => {
