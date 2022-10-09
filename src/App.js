@@ -16,7 +16,7 @@ function App() {
 
   async function fetchCharacters() {
     try {
-      const result = await fetch('https://rickandmortyapi.com/api/character');
+      const result = await fetch('https://rickandmortyapi.com/api/character/');
       const data = await result.json();
       setCharacters(data.results);
     } catch (error) {
@@ -36,7 +36,6 @@ function App() {
         return [...prevFavorites, cardId];
       }
     });
-    console.log('CardId: ' + cardId);
   }
 
   return (
@@ -56,9 +55,7 @@ function App() {
           />
           <Route
             path="/favorites"
-            element={
-              <FavoritesPage favorites={favorites} toggleFavorite={changeFavoriteStatus} />
-            }
+            element={<FavoritesPage favorites={favorites} toggleFavorite={changeFavoriteStatus} />}
           />
           <Route
             path="/random"

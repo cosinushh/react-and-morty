@@ -4,24 +4,24 @@ import Card from '../components/Card';
 export default function FavoritesPage({ favorites, toggleFavorite }) {
   const [favoriteCharacters, setFavoriteCharacters] = useState([]);
 
-  async function fetchCharacters(id) {
-    const alreadyExists = favoriteCharacters.find((favChar) => favChar.id == id);
-    if (!alreadyExists) {
-      try {
-        const result = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
-        const data = await result.json();
-        setFavoriteCharacters((prevFav) => {
-          //console.log(id, data);
-          return [...prevFav, data];
-        });
-      } catch (error) {
-        console.error(error);
+  async function fetchCharacters() {
+    try {
+      const result = await fetch(`https://rickandmortyapi.com/api/character/${favorites}`);
+      const data = await result.json();
+      if (favorites.length === 0) {
+        setFavoriteCharacters([]);
+      } else if (favorites.length === 1) {
+        setFavoriteCharacters([data]);
+      } else {
+        setFavoriteCharacters(data);
       }
+    } catch (error) {
+      console.error(error);
     }
   }
 
   useEffect(() => {
-    favorites.map((favoriteId) => fetchCharacters(favoriteId));
+    fetchCharacters();
   }, [favorites]);
 
   return (
@@ -40,6 +40,18 @@ export default function FavoritesPage({ favorites, toggleFavorite }) {
     </>
   );
 }
+
+/* {favoriteCharacters.map((character) => {
+  return (
+    <Card
+      key={character.id}
+      props={character}
+      detailsState={false}
+      toggleFavorite={() => toggleFavorite(character.id)}
+      favorites={favorites}
+    />
+  );
+})} */
 
 /* {favoriteCharacters.filter(favoriteCharacter => favorites.includes(favoriteCharacter.id))
       .map((item) => {
