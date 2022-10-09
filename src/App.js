@@ -57,7 +57,7 @@ function App() {
           <Route
             path="/favorites"
             element={
-              <FavoritesPage characters={characters} favorites={favorites} toggleFavorite={changeFavoriteStatus} />
+              <FavoritesPage favorites={favorites} toggleFavorite={changeFavoriteStatus} />
             }
           />
           <Route
