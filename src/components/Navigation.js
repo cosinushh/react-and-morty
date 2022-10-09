@@ -30,14 +30,16 @@ export default Navigation;
 
 const NavigationContainer = styled.ul`
   z-index: 30;
+  height: 60px;
   box-shadow: 6px 4px 6px 6px rgba(0, 0, 0, 0.4);
   padding: 15px;
+  padding-top: 20px;
   background-color: var(--background);
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
   transition: 500ms ease-in-out;
 `;
 
@@ -45,7 +47,6 @@ const LinkButton = styled(NavLink)`
   font-family: var(--copy);
   font-size: 0.85em;
   text-transform: uppercase;
-  margin: 10px;
   text-decoration: none;
   background-color: var(--primary);
   color: var(--background);

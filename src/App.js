@@ -13,12 +13,14 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   const [characters, setCharacters] = useState([]);
   const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [charactersAmount, setCharactersAmount] = useState(0);
 
   async function fetchCharacters() {
     try {
       const result = await fetch('https://rickandmortyapi.com/api/character/');
       const data = await result.json();
       setCharacters(data.results);
+      setCharactersAmount(data.info.count);
     } catch (error) {
       console.error(error);
     }
@@ -49,9 +51,7 @@ function App() {
           />
           <Route
             path="/character/:id"
-            element={
-              <CharacterPage characters={characters} favorites={favorites} toggleFavorite={changeFavoriteStatus} />
-            }
+            element={<CharacterPage favorites={favorites} toggleFavorite={changeFavoriteStatus} />}
           />
           <Route
             path="/favorites"
@@ -59,7 +59,13 @@ function App() {
           />
           <Route
             path="/random"
-            element={<RandomPage characters={characters} toggleFavorite={changeFavoriteStatus} />}
+            element={
+              <RandomPage
+                favorites={favorites}
+                toggleFavorite={changeFavoriteStatus}
+                charactersAmount={charactersAmount}
+              />
+            }
           />
         </Routes>
       </CardsContainer>
@@ -71,7 +77,11 @@ function App() {
 export default App;
 
 const CardsContainer = styled.main`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   overflow-y: auto;
   margin-left: auto;
   margin-right: auto;
+  
 `;
