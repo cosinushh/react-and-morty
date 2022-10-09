@@ -1,6 +1,6 @@
 import Card from '../components/Card';
 
-export default function HomePage({ characters, toggleFavorite }) {
+export default function HomePage({ characters, toggleFavorite, favorites }) {
   return (
     <>
       {characters.map((character) => {
@@ -10,6 +10,7 @@ export default function HomePage({ characters, toggleFavorite }) {
             props={character}
             detailsState={false}
             toggleFavorite={() => toggleFavorite(character.id)}
+            favorites={favorites}
           />
         );
       })}
