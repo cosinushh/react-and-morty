@@ -80,8 +80,8 @@ const CardsContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
   overflow-y: auto;
   margin-left: auto;
   margin-right: auto;
-  
 `;
